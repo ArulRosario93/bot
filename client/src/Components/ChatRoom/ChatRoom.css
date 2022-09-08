@@ -1,0 +1,115 @@
+.chatRoom {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-y: scroll;
+  margin-top: -13px;
+}
+.chatRoom {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.chatRoom::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+.chatRoom .timehere{
+    margin: 15px 0px;
+    padding-top: 13px;
+}
+.btnsHere {
+  top: 0%;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.btn {
+  padding: 0px 1px;
+  max-width: 6rem;
+  margin-right: 10px;
+  background: turquoise;
+  float: left;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  min-width: 4rem;
+}
+.btn p{
+    font-size: smaller;
+}
+.bot {
+  background-color: #fffa;
+  position: relative;
+}
+
+.sent{
+    position: relative;
+    float: right;
+    max-width: 272px;
+    min-width: 210px;
+}
+.received{
+    max-width: 272px;
+    min-width: 210px;
+    float: left;
+  }
+  .sent .messageWidthShortened .timeHere{
+    text-align: right;
+  }
+  .received .messageWidthShortened .timeHere{
+    text-align: left;
+  }
+  .received .messageWidthShortened{
+    background-color: rgba(255, 255, 255, 0.952); 
+    border-radius: 10px;
+    font-size:smaller;
+    margin-top: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    padding: 11px 11px 1px 9px;
+    width: fit-content;
+}
+.sent .messageWidthShortened{
+  border-radius: 10px;
+  width: fit-content;
+  text-align: right;
+  color:aliceblue;
+  background-color:  rgba(12, 12, 12, 0.904);
+  padding: 12px 14px 2px;
+  font-size: smaller;
+  border-radius: 10px;
+  float: right;
+}
+.sent p{
+  margin-top: 7px;
+}
+.received p{
+  margin-top: 7px;
+}
+.buttonHere{
+  padding: 0px 9px;
+}
+.sendBtn{
+  border: .5px solid gray;
+  padding: 1px 3px;
+}
+.sendBtn p{
+  margin: 0%;
+  padding: 0%;
+}
+.inputContainer{
+  left: 0%;
+  bottom: 0%;
+  background: white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  border-top: .5 solid black;
+}
+.inputContainer input{
+  outline: none;
+  border: none;
+  width: 100%;
+  background: none;
+  font-weight: lighter;
+}
