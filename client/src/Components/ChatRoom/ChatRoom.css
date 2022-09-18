@@ -26,7 +26,7 @@
   padding: 0px 1px;
   max-width: 6rem;
   margin-right: 10px;
-  background: turquoise;
+  background: aqua;
   float: left;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
@@ -112,4 +112,49 @@
   width: 100%;
   background: none;
   font-weight: lighter;
+}
+.Recommended{
+    box-sizing: border-box;
+    float: left;
+    height: auto;
+    padding: 1% 0;
+    width: 100%;
+}
+.Recommended .messageWidthShortened{
+    background-color: aqua;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+    font-size: smaller;
+    margin-top: 10px;
+    padding: 11px 11px 1px 9px;
+}
+.Recommended .messageWidthShortened h4{
+  margin: 0%;
+  padding: 6px 0px;
+}
+.RecommendedText{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .RecommendedText p {
+    margin: 0;
+    padding: 5px 0;
+  }
+  .ANswerHere{
+  transition-timing-function: ease;
+  height: auto;
+  width: 100%;
+}
+.ANswerHere p{
+  padding: 1.5px 0px 1.5px 5px;
+}
+.QusHolder div{
+  transition-timing-function: linear;
+  transition: .2s;
+}
+.QusHolder div p{
+  transition-timing-function: linear;
+  transition: 1s;
 }

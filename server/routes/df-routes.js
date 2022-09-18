@@ -8,6 +8,20 @@ module.exports = (app) => {
    
   });
 
+  app.post("/RecommendedQuery", async (req, res) => {
+    // console.log(req.body.text);
+    // const text = req.body.text;
+
+    const {itemHere}=req.body
+
+    console.log(itemHere, "from value");
+  
+    const resultQuery = await chatbot.textQuery(itemHere);
+    console.log(`  Query: ${resultQuery.queryText}`);
+    console.log(`  Response: ${resultQuery.fulfillmentText}`);
+    res.send(resultQuery.fulfillmentText);
+  });
+
   app.post("/textQuery", async (req, res) => {
     // console.log(req.body.text);
     // const text = req.body.text;

@@ -3,17 +3,35 @@ import "./ChatRoom.css";
 import { useDataLayerValue } from "../../DataLayer";
 import { CircleNotificationsOutlined } from "@mui/icons-material";
 import axios from "axios";
+import Message from "./Message/Message";
 
 const ChatRoom = () => {
   const [{ bitCoins, stocks }, dispatch] = useDataLayerValue();
 
-  const btns = ["stocks", "bit coins"];
+  const btns = ["Sln Token", "Silver Line", "General"];
 
-  const [focus, setFocus] = useState(true);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     { text: "Hello how may i help you <3", type: "received" },
   ]);
+
+  const slnTokensRecommended = [
+    "What determines SLN Token's price?",
+    "Can SLN tokens be regulated?",
+    "What happens when the SLN tokens are lost?",
+    "Why do we need to trust SLN tokens?"
+  ]
+
+  const silverLineRecommended = [
+    "How is Silver Line different from others?",
+    "Who controls the Silver Line networks?",
+  ]
+
+  const generalRecommended = [
+    "How to start trading?",
+    "What is the best time to trade?",
+    "Who is the founder of this website/Platform?",
+  ]
 
   const Handler = (e) => {
     const text = e.target.value;
@@ -36,10 +54,18 @@ const ChatRoom = () => {
   
         const botText = response.data;
   
+        const yup = JSON.stringify(botText);
+        const jgiadg = yup.replace(/\\n/g, "\n");
+        const final = yup.replace(/['"]/g, "");
+
         setMessages((pervMessages) => [
           ...pervMessages,
-          { text: botText, type: "received" },
+          { text: final, type: "received" },
         ]);
+
+        console.log(yup)
+        console.log(jgiadg)
+        console.log(final)
   
         setMessage("");
       }
@@ -50,28 +76,28 @@ const ChatRoom = () => {
   const messagesEndRef = useRef(null);
 
   const HandlerBtn = (event, value) => {
-    if (value === "stocks") {
-      dispatch({
-        type: "SET_STOCKS",
-        stocks: true,
-      });
+    
+    if(value === "Sln Token"){
+      setMessages(prevMessage => [
+        ...prevMessage,
+        { text: slnTokensRecommended.map(item => item), type: 'Recommended', value }
+      ])
     }
-    if (value === "bit coins") {
-      dispatch({
-        type: "SET_BITCOINS",
-        bitCoins: true,
-      });
+
+    if (value === "Silver Line") {
+      setMessages(prevMessage => [
+        ...prevMessage,
+        { text: silverLineRecommended.map(item => item), type: 'Recommended', value }
+      ])
+    }
+
+    if (value === "General") {
+      setMessages(prevMessage => [
+        ...prevMessage,
+        { text: generalRecommended.map(item => item), type: 'Recommended', value }
+      ])
     }
   };
-  const le = "left";
-  const ri = "right";
-
-  const today = new Date();
-
-  const hrs = today.getHours();
-  const mins = today.getMinutes();
-
-  const time = hrs + ":" + mins;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -82,8 +108,14 @@ const ChatRoom = () => {
 
   console.log(window.innerHeight / 39, "height for greeetings here");
 
+  let today = new Date();
+  let hrs = today.getHours();
+  let mins = today.getMinutes();
+  let time = hrs + ":" + mins;
+
   useEffect(() => {
     scrollToBottom();
+
     console.log(messages, "message here")
   }, [messages]);
 
@@ -94,7 +126,9 @@ const ChatRoom = () => {
         style={{ height: window.innerHeight / 12.0563 + `vh` }}
       >
         <p className="timehere" style={{ margin: "1px 0px 5px" }}>
-          {time}
+          {
+            time
+          }
         </p>
         {btns.length > 0 ? (
           <div className="btnsHere">
@@ -112,25 +146,18 @@ const ChatRoom = () => {
           </div>
         ) : null}
         {messages.length > 0 ? (
+
           <div>
             {messages.map((item, i) => {
               return (
-                <div
-                  className={item.type}
-                  style={{ textAlign: `${item.type === "sent" ? ri : le}` }}
-                  key={i}
-                >
-                  <div className="messageWidthShortened">
-                    <p style={{ margin: "0px", fontSize: "small" }}>
-                      {item.text}
-                    </p>
-                  <p className="timeHere" style={{fontSize: 'smaller', fontWeight: 'lighter'}}>{time}</p>
-                  </div>
-                  <div style={{paddingTop: '3vh'}} ref={messagesEndRef}/>
-                </div>
+                <>
+                  <Message itemHere={item}/>
+                  <div style={{paddingTop: '5vh'}} ref={messagesEndRef}/>
+                </>
               );
             })}
           </div>
+
         ) : null}
       </div>
       <form className="inputContainer" onSubmit={HandlerClick}>
